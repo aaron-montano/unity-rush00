@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
 
     public Camera cc;
-    private Transform my;
+    [HideInInspector]public Transform my;
     private Rigidbody2D body;
 
     void Awake()

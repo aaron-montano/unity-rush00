@@ -8,12 +8,17 @@ public class GunManager : MonoBehaviour
 	public Sprite Bullet;
 	public bool IsMelee;
 	public bool CheckForEnemy;
+	public GameObject BulletObj;
     // Start is called before the first frame update
-    void Start()
-    {
+    
+	void Awake()
+	{
         NumOfBullets = 0;
 		IsMelee = false;
 		CheckForEnemy = false;
+	}
+	void Start()
+    {
     }
 
     // Update is called once per frame
@@ -34,6 +39,6 @@ public class GunManager : MonoBehaviour
 	void Shoot()
 	{
 		NumOfBullets--;
-		//firebullet;
+		Instantiate(BulletObj, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,0)));
 	}
 }
