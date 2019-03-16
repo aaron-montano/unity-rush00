@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class GunPickUP : MonoBehaviour
+public class GunPickUp : MonoBehaviour
 {
 	public PlayerController _playerManager;
 	public Sprite GunImage;
@@ -14,6 +14,7 @@ public class GunPickUP : MonoBehaviour
 			_playerManager.HasGun = true;
 			_playerManager.Gun.GetComponent<SpriteRenderer>().sprite = GunImage;
 			_playerManager.Gun.SetActive(true);
+			_playerManager.Gun.GetComponent<GunManager>().NumOfBullets = NumOfBullets;
 			Destroy(gameObject);
 		}
 	}

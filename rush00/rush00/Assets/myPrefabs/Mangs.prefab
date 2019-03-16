@@ -368,6 +368,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9109712803738095451}
   - component: {fileID: 4481714704367776768}
+  - component: {fileID: 5150567558830873573}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -437,3 +438,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5150567558830873573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096271817760956135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1198fa55519afdd46a542e579dc11d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NumOfBullets: 0
+  Bullet: {fileID: 21300000, guid: 8decb5a550087491e961fbd84390cc8e, type: 3}
+  IsMelee: 0
+  CheckForEnemy: 0

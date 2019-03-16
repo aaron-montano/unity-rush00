@@ -54,6 +54,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\GunManager.cs" />
+     <Compile Include="Assets\Scripts\GunPickUp.cs" />
+     <Compile Include="Assets\Scripts\PlayerAudioController.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <None Include="Assets\Fonts\friday13\Font License.txt" />
      <None Include="Assets\Fonts\d3digitalism\Read Me.txt" />
