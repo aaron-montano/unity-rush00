@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        cc = GetComponent<Camera>();
+        cc = GameObject.Find("Main Camera").GetComponent<Camera>();
         my = GetComponent<Transform>();
         body = GetComponent<Rigidbody2D>();
 
@@ -30,22 +30,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //rotate
+        Vector3 mouse = cc.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+        float angle = Mathf.Atan2(mouse.y - my.position.y, mouse.x - my.position.x) * Mathf.Rad2Deg + 90;
+        body.rotation = angle;
+
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
         //movement
-        /* if (  (direction = Input.GetAxis("Horizontal")) != 0f)
-            body.velocity = direction * cc.transform.right * speed;
-            //transform.Translate(cc.transform.left * direction * speed * Time.deltaTime, Space.World);
-        if ( (direction = Input.GetAxis("Vertical")) != 0f)
-            body.velocity = direction * cc.transform.up * speed;
-            //transform.Translate(cc.transform.down * direction * speed * Time.deltaTime, Space.World);
-        */
         body.velocity = new Vector2(horizontal * speed, vertical * speed);
-        //rotation
-        float camDis = transform.position.y - my.position.y;
-        Vector3 mouse = cc.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, camDis));
-        float AngleRad = Mathf.Atan2(mouse.y - my.position.y, mouse.x - my.position.x);
-        float angle = 90 + (180 / Mathf.PI) * AngleRad;
-        my.rotation = Quaternion.Euler(0, 0, angle);
+        //move cam
+        cc.transform.position = new Vector3(my.position.x, my.position.y, -10);
     }
 }
