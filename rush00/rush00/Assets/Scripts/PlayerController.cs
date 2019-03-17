@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
 			Gun.SetActive(false);
 			gm.CurrentGun.GetComponent<GunPickUp>().NumOfBullets = gm.NumOfBullets;
 			gm.NumOfBullets = 0;
-			gm.CurrentGun.transform.position = new Vector3(transform.position.x, transform.position.y + 1, 0);
+			gm.CurrentGun.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
 			gm.CurrentGun.SetActive(true);
 			gm.CurrentGun = null;
 		}	//add function drop gun forward;

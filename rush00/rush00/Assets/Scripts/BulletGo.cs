@@ -20,7 +20,7 @@ public class BulletGo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		transform.Translate(Vector2.left * Time.deltaTime * 10);
+		transform.Translate(Vector2.left * Time.deltaTime * 20);
 	}
 	void OnTriggerEnter2D(Collider2D col)
 	{
@@ -28,6 +28,11 @@ public class BulletGo : MonoBehaviour
 		{
 			if (col.gameObject.CompareTag(Tag))
 			{
+				if (col.gameObject.CompareTag("Player"))
+				{
+					Time.timeScale = 0;
+					Camera.main.GetComponent<EndMenu>().EnableMenu();
+				}
 				Debug.Log("ENEMY KILLED");
 				Destroy(col.gameObject);
 			}	//col.gameObject.PlayDeath();

@@ -12,7 +12,7 @@ public class EnemyManager : MonoBehaviour
     void Start()
     {
         EnemyGun.GetComponent<GunManager>().NumOfBullets = 100000;
-        StartCoroutine(Fire()); //Enemy Fire Disable for Debug
+		StartCoroutine(Fire()); //Enemy Fire Disable for Debug
     }
 
     void OnTriggerStay2D(Collider2D col)
@@ -26,16 +26,11 @@ public class EnemyManager : MonoBehaviour
 
             float rot_z = Mathf.Atan2(_playerPos.y, _playerPos.x) * Mathf.Rad2Deg;
             Enemy.transform.rotation = Quaternion.Euler(0f, 0f, rot_z + 90);
-            //Debug.Log("Rotation finished");
             if (Vector3.Distance(col.gameObject.transform.position, Enemy.transform.position) > 2f)
-                Enemy.transform.Translate(Vector3.down * Time.deltaTime * 5);
+                Enemy.GetComponent<Rigidbody2D>().MovePosition(Enemy.transform.position + _playerPos * Time.deltaTime * 5);
         }
     }
 
-    void OnTriggerExit(Collider other)
-    {
-        CanFire = false;
-    }
     IEnumerator Fire()
     {
         yield return new WaitForSeconds(1f);
@@ -43,6 +38,7 @@ public class EnemyManager : MonoBehaviour
         {
             GetComponent<EnemyAudioController>().playSound("shoot");
             EnemyGun.GetComponent<GunManager>().Shoot();
+			CanFire = false;
         }
         StartCoroutine(Fire());
     }

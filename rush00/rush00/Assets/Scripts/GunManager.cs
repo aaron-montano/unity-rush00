@@ -18,19 +18,14 @@ public class GunManager : MonoBehaviour
 		IsMelee = false;
 		CheckForEnemy = false;
 	}
-	void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
 	
-	void OnCollisionStay2D(Collision2D col)
+	void OnTriggerStay2D(Collider2D col)
 	{
-		if (CheckForEnemy)
-		{}//col.gameObject.PlayDeath();
+		if (CheckForEnemy && col.gameObject.CompareTag("Enemy"))
+		{
+			Debug.Log("ENEMY KILLED WITH SWORD");
+			Destroy(col.gameObject);
+		}//col.gameObject.PlayDeath();
 	}
 	public void Shoot()
 	{

@@ -475,6 +475,7 @@ GameObject:
   - component: {fileID: 9109712803738095451}
   - component: {fileID: 4481714704367776768}
   - component: {fileID: 5150567558830873573}
+  - component: {fileID: 1747184292562765286}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -560,5 +561,32 @@ MonoBehaviour:
   Bullet: {fileID: 21300000, guid: 8decb5a550087491e961fbd84390cc8e, type: 3}
   IsMelee: 0
   CheckForEnemy: 0
-  BulletObj: {fileID: 0}
+  BulletObj: {fileID: 6036380428997015906, guid: 7530c6363025ba543850664362abea0d,
+    type: 3}
   CurrentGun: {fileID: 0}
+--- !u!61 &1747184292562765286
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096271817760956135}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.8}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.25, y: 0.34375}
+    newSize: {x: 0.25, y: 0.34375}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.3, y: 1.5}
+  m_EdgeRadius: 0
