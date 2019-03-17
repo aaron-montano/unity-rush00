@@ -14,7 +14,7 @@ public class EnemyAudioController : MonoBehaviour
     }
     int getSoundIndex(string str)
     {
-        if (str == "shoot0") return 0;
+        if (str == "shoot") return 0;
         if (str == "shoot1") return 1;
         if (str == "shoot2") return 2;
         if (str == "die")    return 3;
@@ -25,7 +25,7 @@ public class EnemyAudioController : MonoBehaviour
     {
         int idx = getSoundIndex(str);
         if (idx > -1)
-            this.GetComponent<AudioSource>().PlayOneShot(sfx[idx], 0.8f);
+            this.GetComponent<AudioSource>().PlayOneShot(sfx[idx], 0.4f);
 
     }
     // Update is called once per frame

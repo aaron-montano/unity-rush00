@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]public Transform my;
     private Rigidbody2D body;
 	private GameObject tmp;
+	private Animator animator;
+    void Start()	{ }
     void Awake()
     {
 		Gun.SetActive(false);
@@ -24,23 +26,15 @@ public class PlayerController : MonoBehaviour
         cc = GameObject.Find("Main Camera").GetComponent<Camera>();
         my = GetComponent<Transform>();
         body = GetComponent<Rigidbody2D>();
-    }
-    void Start()
-    {
-        
+		animator = transform.Find("legs").GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         //rotate
-        // Vector3 mouse = cc.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
-        // float angle = Mathf.Atan2(mouse.y - my.position.y, mouse.x - my.position.x) * Mathf.Rad2Deg + 90;
-        // body.rotation = angle;
-        
 		Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 		diff.Normalize();
- 
 		float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
 		transform.rotation = Quaternion.Euler(0f, 0f, rot_z + 90);
 		//movement
@@ -48,6 +42,11 @@ public class PlayerController : MonoBehaviour
         vertical = Input.GetAxisRaw("Vertical");
 		diff = new Vector3(horizontal * speed, vertical * speed, 0);
         body.velocity = diff;
+		//set leg animation parameter
+		if (horizontal != 0 || vertical != 0)
+			animator.SetBool("isMoving", true);
+		else
+			animator.SetBool("isMoving", false);
         //move cam
         cc.transform.position = new Vector3(my.position.x, my.position.y, -10);
 		MakeDmg();
@@ -56,7 +55,10 @@ public class PlayerController : MonoBehaviour
 	void MakeDmg()
 	{
 		if (Input.GetMouseButtonDown(0) && Gun.GetComponent<GunManager>().NumOfBullets > 0)
+		{
+			GetComponent<PlayerAudioController>().playSound("shoot");
 			Gun.GetComponent<GunManager>().Shoot();
+		}
 		if (Input.GetMouseButtonDown(0) && Gun.GetComponent<GunManager>().IsMelee)
 			Gun.GetComponent<GunManager>().CheckForEnemy = true;
 		if (Input.GetMouseButtonUp(0))
@@ -66,14 +68,14 @@ public class PlayerController : MonoBehaviour
 	{
 		if (Input.GetMouseButtonDown(1) && HasGun)
 		{
+			GunManager gm = Gun.GetComponent<GunManager>();
 			HasGun = false;
 			Gun.SetActive(false);
-			Gun.GetComponent<GunManager>().CurrentGun.GetComponent<GunPickUp>().NumOfBullets = Gun.GetComponent<GunManager>().NumOfBullets;
-			Gun.GetComponent<GunManager>().NumOfBullets = 0;
-			Gun.GetComponent<GunManager>().CurrentGun.transform.position = new Vector3(transform.position.x, transform.position.y + 1, 0);
-			Gun.GetComponent<GunManager>().CurrentGun.SetActive(true);
-			Gun.GetComponent<GunManager>().CurrentGun = null;
-			//add function drop gun forward;
-		}
+			gm.CurrentGun.GetComponent<GunPickUp>().NumOfBullets = gm.NumOfBullets;
+			gm.NumOfBullets = 0;
+			gm.CurrentGun.transform.position = new Vector3(transform.position.x, transform.position.y + 1, 0);
+			gm.CurrentGun.SetActive(true);
+			gm.CurrentGun = null;
+		}	//add function drop gun forward;
 	}
 }

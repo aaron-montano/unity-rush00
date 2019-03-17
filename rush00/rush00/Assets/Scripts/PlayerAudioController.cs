@@ -25,7 +25,7 @@ public class PlayerAudioController : MonoBehaviour
     {
         int idx = getSoundIndex(str);
         if (idx > -1)
-            this.GetComponent<AudioSource>().PlayOneShot(sfx[idx], 0.8f);
+            this.GetComponent<AudioSource>().PlayOneShot(sfx[idx], 0.4f);
 
     }
 
