@@ -109,7 +109,6 @@ GameObject:
   m_Component:
   - component: {fileID: 436381847262552164}
   - component: {fileID: 2272623486432172197}
-  - component: {fileID: 1327812262}
   - component: {fileID: 2262650019024157942}
   m_Layer: 0
   m_Name: Mangs
@@ -153,27 +152,7 @@ MonoBehaviour:
   Gun: {fileID: 2096271817760956135}
   direction: 0
   cc: {fileID: 0}
---- !u!50 &1327812262
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 436381847262552167}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  my: {fileID: 0}
 --- !u!61 &2262650019024157942
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -454,3 +433,5 @@ MonoBehaviour:
   Bullet: {fileID: 21300000, guid: 8decb5a550087491e961fbd84390cc8e, type: 3}
   IsMelee: 0
   CheckForEnemy: 0
+  BulletObj: {fileID: 0}
+  CurrentGun: {fileID: 0}

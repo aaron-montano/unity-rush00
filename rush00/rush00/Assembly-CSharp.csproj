@@ -54,6 +54,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\BulletGo.cs" />
+     <Compile Include="Assets\Scripts\EnemyAudioController.cs" />
+     <Compile Include="Assets\Scripts\EnemyManager.cs" />
      <Compile Include="Assets\Scripts\GunManager.cs" />
      <Compile Include="Assets\Scripts\GunPickUp.cs" />
      <Compile Include="Assets\Scripts\PlayerAudioController.cs" />

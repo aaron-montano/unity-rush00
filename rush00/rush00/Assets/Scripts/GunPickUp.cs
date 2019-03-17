@@ -15,7 +15,8 @@ public class GunPickUp : MonoBehaviour
 			_playerManager.Gun.GetComponent<SpriteRenderer>().sprite = GunImage;
 			_playerManager.Gun.SetActive(true);
 			_playerManager.Gun.GetComponent<GunManager>().NumOfBullets = NumOfBullets;
-			Destroy(gameObject);
+			_playerManager.Gun.GetComponent<GunManager>().CurrentGun = gameObject;
+			gameObject.SetActive(false);
 		}
 	}
 }

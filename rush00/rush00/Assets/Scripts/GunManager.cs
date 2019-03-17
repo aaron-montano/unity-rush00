@@ -9,6 +9,7 @@ public class GunManager : MonoBehaviour
 	public bool IsMelee;
 	public bool CheckForEnemy;
 	public GameObject BulletObj;
+	public GameObject CurrentGun;
     // Start is called before the first frame update
     
 	void Awake()
@@ -24,21 +25,16 @@ public class GunManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && NumOfBullets > 0)
-			Shoot();
-		if (Input.GetMouseButtonDown(0) && IsMelee)
-			CheckForEnemy = true;
-		if (Input.GetMouseButtonUp(0))
-			CheckForEnemy = false;
     }
 	
 	void OnCollisionStay2D(Collision2D col)
 	{
-		//col.gameObject.PlayDeath();
+		if (CheckForEnemy)
+		{}//col.gameObject.PlayDeath();
 	}
-	void Shoot()
+	public void Shoot()
 	{
 		NumOfBullets--;
-		Instantiate(BulletObj, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,0)));
+		Instantiate(BulletObj, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.Euler(new Vector3(0, 0, 0)));
 	}
 }

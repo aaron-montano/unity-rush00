@@ -5,7 +5,6 @@ using UnityEngine;
 public class BulletGo : MonoBehaviour
 {
 	public string Tag;
-	public string Shoter;
 	Vector3 mouse;
 	Ray2D ray;
 	RaycastHit hit;
@@ -25,7 +24,7 @@ public class BulletGo : MonoBehaviour
 	}
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (!col.gameObject.CompareTag(Shoter))
+		if (col.gameObject.CompareTag(Tag) || col.gameObject.CompareTag("Wall"))
 		{
 			if (col.gameObject.CompareTag(Tag))
 			{
